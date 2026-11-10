@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InventariCoffe — Presentación</title>
+  <meta name="description" content="InventariCoffe: inventario, punto de venta, caja, pedidos por WhatsApp con IA y reportes para cafeterías.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <!-- Aplica el tema guardado antes de pintar, para que no parpadee en oscuro -->
+  <script>
+    try { if (localStorage.getItem('inventaricoffe-tema') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch (e) {}
+  </script>
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <header class="barra-sup">
+    <a class="marca" href="#1" aria-label="Ir a la portada">
+      <span class="marca-icono" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3c0 1.2 1 1.2 1 2.4M12 3c0 1.2 1 1.2 1 2.4"/></svg>
+      </span>
+      InventariCoffe
+    </a>
+    <div class="barra-der">
+      <button class="tema-btn" id="tema" type="button" aria-label="Cambiar a modo claro" title="Cambiar a modo claro">
+        <!-- Sol: visible en modo oscuro (lleva al modo día) -->
+        <svg class="icono-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <!-- Luna: visible en modo claro (lleva al modo noche) -->
+        <svg class="icono-luna" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+      </button>
+      <div class="contador" aria-live="polite"><span id="actual">1</span> / <span id="total">13</span></div>
+    </div>
+  </header>
+
+  <main class="deck" id="deck">
+
+    <!-- 1. Portada -->
+    <section class="slide portada" data-titulo="Portada">
+      <div class="contenido dos-col">
+        <div>
+          <span class="chip r" style="--i:0">Software para cafeterías</span>
+          <h1 class="display r" style="--i:1">Tu cafetería,<br><em>bajo control.</em></h1>
+          <p class="lead r" style="--i:2">Inventario, recetas, punto de venta, caja, pedidos por WhatsApp con inteligencia artificial y reportes de ganancia. Todo en un solo sistema.</p>
+          <div class="acciones r" style="--i:3">
+            <button class="btn btn-primario" data-ir="13">Quiero una demo</button>
+            <button class="btn btn-sec" data-ir="2">Ver cómo funciona →</button>
+          </div>
+        </div>
+        <div class="ventana r" style="--i:2" aria-hidden="true">
+          <div class="ventana-barra"><i></i><i></i><i></i><span>Panel · Hoy</span></div>
+          <div class="ventana-cuerpo">
+            <div class="kpis">
+              <div class="kpi"><small>Ventas del día</small><b>$4,860</b><span class="sube">▲ 12%</span></div>
+              <div class="kpi"><small>Tickets</small><b>87</b><span class="neutro">Caja abierta</span></div>
+              <div class="kpi"><small>Ganancia</small><b>$2,915</b><span class="sube">60% margen</span></div>
+            </div>
+            <div class="mini-graf">
+              <span style="--h:38%"></span><span style="--h:52%"></span><span style="--h:44%"></span><span style="--h:70%"></span><span style="--h:63%"></span><span style="--h:88%"></span><span style="--h:76%"></span>
+            </div>
+            <div class="aviso"><span class="punto"></span>Quedan 3 días de café en grano. <b>Reponer</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. El problema -->
+    <section class="slide" data-titulo="El problema">
+      <div class="contenido">
+        <span class="etiqueta r" style="--i:0">El problema</span>
+        <h2 class="titulo r" style="--i:1">Vender café es fácil.<br>Saber si estás ganando, no.</h2>
+        <div class="rejilla-4">
+          <article class="tarjeta r" style="--i:2">
+            <div class="icono"><svg viewBox="0 0 24 24"><path d="M4 4h12l4 4v12H4z"/><path d="M8 10h8M8 14h8M8 18h5"/></svg></div>
+            <h3>Inventario en libreta</h3>
+            <p>Te enteras de que se acabó la leche cuando el cliente ya pidió su latte.</p>
+          </article>
+          <article class="tarjeta r" style="--i:3">
+            <div class="icono"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 13V7h-6"/></svg></div>
+            <h3>Costos que suben solos</h3>
+            <p>El proveedor sube precios y tu margen se encoge sin que nadie lo note.</p>
+          </article>
+          <article class="tarjeta r" style="--i:4">
+            <div class="icono"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12Z"/></svg></div>
+            <h3>Pedidos perdidos</h3>
+            <p>Mensajes de WhatsApp sin responder en hora pico son ventas que se van.</p>
+          </article>
+          <article class="tarjeta r" style="--i:5">
+            <div class="icono"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg></div>
+            <h3>Caja que no cuadra</h3>
+            <p>Al cierre del día el efectivo no coincide y no hay forma de saber por qué.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. La solución -->
+    <section class="slide" data-titulo="La solución">
+      <div class="contenido dos-col">
+        <div>
+          <span class="etiqueta r" style="--i:0">La solución</span>
+          <h2 class="titulo r" style="--i:1">Un solo sistema que conecta todo tu negocio.</h2>
+          <p class="lead r" style="--i:2">Cada venta descuenta los insumos de su receta. Cada insumo conoce su costo. Así sabes, en tiempo real, cuánto tienes, cuánto vendes y cuánto ganas.</p>
+        </div>
+        <div class="flujo r" style="--i:2" aria-label="Flujo: insumos, recetas, productos, venta, reportes">
+          <div class="nodo"><b>Insumos</b><small>Café, leche, vasos…</small></div>
+          <div class="flecha" aria-hidden="true"></div>
+          <div class="nodo"><b>Mezclas y bases</b><small>Recetas intermedias</small></div>
+          <div class="flecha" aria-hidden="true"></div>
+          <div class="nodo"><b>Productos</b><small>Receta + precio</small></div>
+          <div class="flecha" aria-hidden="true"></div>
+          <div class="nodo nodo-acento"><b>Venta</b><small>Mostrador o WhatsApp</small></div>
+          <div class="flecha" aria-hidden="true"></div>
+          <div class="nodo"><b>Reportes</b><small>Ganancia y reposición</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Inventario -->
+    <section class="slide" data-titulo="Inventario">
+      <div class="contenido dos-col">
+        <div>
+          <span class="etiqueta r" style="--i:0">01 · Inventario inteligente</span>
+          <h2 class="titulo r" style="--i:1">Sabe exactamente qué tienes en tu almacén.</h2>
+          <ul class="lista r" style="--i:2">
+            <li><b>Insumos con foto</b>, unidad, costo y existencia.</li>
+            <li><b>Buscador en vivo</b> para encontrar cualquier insumo al instante.</li>
+            <li><b>Mezclas y bases</b>: produce un jarabe o una masa y el sistema descuenta sus ingredientes.</li>
+            <li><b>Historial de movimientos</b> de cada insumo: entradas, salidas y quién las hizo.</li>
+          </ul>
+        </div>
+        <div class="ventana r" style="--i:3" aria-hidden="true">
+          <div class="ventana-barra"><i></i><i></i><i></i><span>Insumos</span></div>
+          <div class="ventana-cuerpo">
+            <div class="buscador">Buscar insumo…</div>
+            <div class="stock"><span class="nombre">Café en grano</span><span class="barra"><i style="--p:82%"></i></span><span class="cant">8.2 kg</span></div>
+            <div class="stock"><span class="nombre">Leche entera</span><span class="barra"><i style="--p:46%"></i></span><span class="cant">23 L</span></div>
+            <div class="stock"><span class="nombre">Jarabe de vainilla</span><span class="barra"><i style="--p:64%"></i></span><span class="cant">3.2 L</span></div>
+            <div class="stock bajo"><span class="nombre">Vasos 12 oz</span><span class="barra"><i style="--p:14%"></i></span><span class="cant">70 pzs</span></div>
+            <div class="stock"><span class="nombre">Azúcar mascabado</span><span class="barra"><i style="--p:58%"></i></span><span class="cant">5.8 kg</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Punto de venta y caja -->
+    <section class="slide" data-titulo="Punto de venta">
+      <div class="contenido dos-col">
+        <div>
+          <span class="etiqueta r" style="--i:0">02 · Punto de venta y caja</span>
+          <h2 class="titulo r" style="--i:1">Cobra rápido. Cierra la caja sin sorpresas.</h2>
+          <ul class="lista r" style="--i:2">
+            <li><b>Carrito y cobro</b> en pocos toques, con imagen de cada producto.</li>
+            <li><b>Tickets</b> de venta listos para entregar al cliente.</li>
+            <li><b>Apertura de caja obligatoria</b>: no se puede vender si la caja no está abierta.</li>
+            <li><b>Cortes de caja</b> con el total del día calculado automáticamente.</li>
+          </ul>
+        </div>
+        <div class="ticket r" style="--i:3" aria-hidden="true">
+          <div class="ticket-enc">
+            <b>Abuelitas Café</b>
+            <span class="pill-ok">● Caja abierta</span>
+          </div>
+          <small>Ticket #00128 · 09/11 · 17:42</small>
+          <div class="ticket-linea"><span>2 × Capuchino</span><span>$90.00</span></div>
+          <div class="ticket-linea"><span>1 × Latte vainilla</span><span>$52.00</span></div>
+          <div class="ticket-linea"><span>1 × Pan de elote</span><span>$35.00</span></div>
+          <div class="ticket-total"><span>Total</span><span>$177.00</span></div>
+          <button class="btn btn-primario btn-ancho" tabindex="-1">Cobrar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. WhatsApp con IA -->
+    <section class="slide" data-titulo="WhatsApp con IA">
+      <div class="contenido dos-col">
+        <div>
+          <span class="etiqueta r" style="--i:0">03 · Pedidos por WhatsApp con IA</span>
+          <h2 class="titulo r" style="--i:1">Un asistente que toma pedidos mientras tú preparas café.</h2>
+          <ul class="lista r" style="--i:2">
+            <li><b>Se conecta con un código QR</b> a tu número de WhatsApp.</li>
+            <li><b>La IA entiende el pedido</b> en lenguaje natural y lo arma con tu menú real.</li>
+            <li><b>IA local</b>: corre en tu equipo, sin costo por mensaje y sin enviar datos de clientes a terceros.</li>
+            <li><b>Convierte el pedido en venta</b> con un clic y descuenta el inventario.</li>
+          </ul>
+        </div>
+        <div class="telefono r" style="--i:3" aria-hidden="true">
+          <div class="tel-enc"><span class="avatar">AC</span><div><b>Abuelitas Café</b><small>en línea</small></div></div>
+          <div class="chat">
+            <p class="msg cliente">Hola! me das 2 capuchinos y un pan de elote para recoger a las 5?</p>
+            <p class="msg bot">¡Claro! 😊<br>• 2 × Capuchino — $90<br>• 1 × Pan de elote — $35<br><b>Total: $125</b><br>¿A nombre de quién lo dejo?</p>
+            <p class="msg cliente">De Laura</p>
+            <p class="msg bot">Listo, Laura. Tu pedido estará a las 5:00 pm ☕</p>
+          </div>
+          <div class="pedido-card"><span>Pedido #128 · Laura · $125</span><b>Convertir en venta →</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Reportes -->
+    <section class="slide" data-titulo="Reportes">
+      <div class="contenido dos-col">
+        <div>
+          <span class="etiqueta r" style="--i:0">04 · Reportes y alertas</span>
+          <h2 class="titulo r" style="--i:1">Decide con números, no con corazonadas.</h2>
+          <ul class="lista r" style="--i:2">
+            <li><b>Ventas y ganancias</b> por día o por periodo.</li>
+            <li><b>Alertas de margen</b>: te avisa cuando subió el costo de un insumo y un producto ya deja menos.</li>
+            <li><b>Reposición predictiva</b>: calcula en cuántos días se acabará cada insumo según tu ritmo de venta.</li>
+            <li><b>Movimientos de insumos</b> para auditar mermas.</li>
+          </ul>
+        </div>
+        <div class="reporte r" style="--i:3" aria-hidden="true">
+          <div class="rep-enc"><b>Ventas de la semana</b><small>Lun – Dom</small></div>
+          <div class="graf">
+            <div style="--h:42%"><span>L</span></div>
+            <div style="--h:55%"><span>M</span></div>
+            <div style="--h:48%"><span>M</span></div>
+            <div style="--h:66%"><span>J</span></div>
+            <div style="--h:74%"><span>V</span></div>
+            <div class="pico" style="--h:96%"><span>S</span></div>
+            <div style="--h:81%"><span>D</span></div>
+          </div>
+          <div class="alerta alerta-margen"><b>Margen del Latte bajó 6 puntos</b><small>Subió el precio de la leche. Revisa su precio de venta.</small></div>
+          <div class="alerta"><b>Café en grano: ~4 días restantes</b><small>Sugerencia: pedir 10 kg antes del jueves.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Roles y seguridad -->
+    <section class="slide" data-titulo="Seguridad">
+      <div class="contenido">
+        <span class="etiqueta r" style="--i:0">05 · Roles y seguridad</span>
+        <h2 class="titulo r" style="--i:1">Cada quien ve solo lo que le toca.</h2>
+        <div class="rejilla-3">
+          <article class="tarjeta r" style="--i:2">
+            <span class="rol">Vendedor</span>
+            <h3>Mostrador</h3>
+            <p>Abre caja, cobra, entrega pedidos, atiende WhatsApp y hace cortes.</p>
+          </article>
+          <article class="tarjeta r" style="--i:3">
+            <span class="rol">Administrador</span>
+            <h3>Almacén</h3>
+            <p>Da de alta insumos, mezclas y bases, registra existencias y producción.</p>
+          </article>
+          <article class="tarjeta tarjeta-acento r" style="--i:4">
+            <span class="rol">Dueño</span>
+            <h3>Control total</h3>
+            <p>Productos, precios, recetas, usuarios y todos los reportes de ganancia.</p>
+          </article>
+        </div>
+        <p class="nota r" style="--i:5">Inicio de sesión con token seguro, contraseñas cifradas y permisos verificados en el servidor, no solo en la pantalla.</p>
+      </div>
+    </section>
+
+    <!-- 9. Antes y después -->
+    <section class="slide" data-titulo="Antes y después">
+      <div class="contenido">
+        <span class="etiqueta r" style="--i:0">El cambio</span>
+        <h2 class="titulo r" style="--i:1">Antes y después de InventariCoffe</h2>
+        <div class="comparativa r" style="--i:2">
+          <div class="col col-antes">
+            <h3>Antes</h3>
+            <p>Conteo de inventario a mano</p>
+            <p>Precios calculados “a ojo”</p>
+            <p>Pedidos de WhatsApp anotados en papel</p>
+            <p>Corte de caja con calculadora</p>
+            <p>No sabes qué producto deja más</p>
+          </div>
+          <div class="col col-despues">
+            <h3>Con InventariCoffe</h3>
+            <p>Existencias que se actualizan con cada venta</p>
+            <p>Costo real de cada receta y su margen</p>
+            <p>Asistente con IA que toma pedidos 24/7</p>
+            <p>Corte automático con el total del día</p>
+            <p>Reportes de ganancia y alertas a tiempo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Demo -->
+    <section class="slide" data-titulo="Demo">
+      <div class="contenido centrado">
+        <span class="etiqueta r" style="--i:0">Míralo en acción</span>
+        <h2 class="titulo r" style="--i:1">Así se ve en el día a día</h2>
+        <div class="video r" style="--i:2">
+          <video src="demo.mp4" controls preload="metadata" playsinline></video>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. ROI: el costo de no tener sistema -->
+    <!-- Cifras de ejemplo: ajústalas a los precios de tu zona -->
+    <section class="slide" data-titulo="ROI">
+      <div class="contenido">
+        <span class="etiqueta r" style="--i:0">El costo de no hacer nada</span>
+        <h2 class="titulo r" style="--i:1">Ya estás pagando un sistema.<br><em>Solo que en pérdidas.</em></h2>
+        <div class="rejilla-3">
+          <article class="tarjeta tarjeta-roi r" style="--i:2">
+            <div class="icono" aria-hidden="true">💸</div>
+            <h3>Fugas y mermas que nadie ve</h3>
+            <p>Leche que se echa a perder, porciones de más, producto que sale sin cobrarse. <b>Sin registro de entradas y salidas, la pérdida no aparece en ningún reporte</b>: solo en tu cuenta bancaria.</p>
+            <div class="roi-cifra">
+              <b>≈ $1,500 <span>/ mes</span></b>
+              <small>Ejemplo: 2 L de leche al día sin registrar</small>
+            </div>
+          </article>
+          <article class="tarjeta tarjeta-roi r" style="--i:3">
+            <div class="icono" aria-hidden="true">📈</div>
+            <h3>Precios que se quedaron atrás</h3>
+            <p>Tus proveedores suben precios; tu menú no. <b>Cada taza que vendes con el costo del año pasado te deja menos margen</b>, y nadie te avisa.</p>
+            <div class="roi-cifra">
+              <b>≈ $900 <span>/ mes</span></b>
+              <small>Ejemplo: leche +$3/L · 40 lattes al día</small>
+            </div>
+          </article>
+          <article class="tarjeta tarjeta-roi r" style="--i:4">
+            <div class="icono" aria-hidden="true">⏱️</div>
+            <h3>Clientes que no esperan</h3>
+            <p>En hora pico nadie contesta WhatsApp y la fila avanza lento. <b>El cliente no se queja: simplemente le compra a la cafetería de enfrente.</b></p>
+            <div class="roi-cifra">
+              <b>≈ $1,080 <span>/ mes</span></b>
+              <small>Ejemplo: 2 pedidos de $125 sin responder por semana</small>
+            </div>
+          </article>
+        </div>
+        <p class="nota nota-roi r" style="--i:5"><b>Recuperar solo 2 pedidos perdidos a la semana paga tu plan Profesional.</b> Cada merma que detectas y cada margen que corriges después de eso es dinero que se queda contigo.</p>
+        <p class="roi-aviso r" style="--i:6">Cifras ilustrativas con precios promedio. Tu ahorro real depende de tu volumen de ventas.</p>
+      </div>
+    </section>
+
+    <!-- 12. Planes -->
+    <!-- Ajusta aquí tus precios reales -->
+    <section class="slide" data-titulo="Planes">
+      <div class="contenido">
+        <span class="etiqueta r" style="--i:0">Planes</span>
+        <h2 class="titulo r" style="--i:1">Elige el plan para tu cafetería</h2>
+        <div class="rejilla-3 planes">
+          <article class="plan r" style="--i:2">
+            <h3>Esencial</h3>
+            <p class="precio">$499 <small>MXN / mes</small></p>
+            <ul>
+              <li>Inventario e insumos</li>
+              <li>Punto de venta y tickets</li>
+              <li>Apertura y cortes de caja</li>
+              <li>Hasta 3 usuarios</li>
+            </ul>
+            <button class="btn btn-sec btn-ancho" data-ir="13">Elegir Esencial</button>
+          </article>
+          <article class="plan plan-destacado r" style="--i:3">
+            <span class="chip chip-solido">Más elegido</span>
+            <h3>Profesional</h3>
+            <p class="precio">$899 <small>MXN / mes</small></p>
+            <ul>
+              <li>Todo lo de Esencial</li>
+              <li>Mezclas, bases y recetas</li>
+              <li>Reportes, alertas de margen y reposición</li>
+              <li>Asistente de WhatsApp con IA</li>
+              <li>Usuarios ilimitados</li>
+            </ul>
+            <button class="btn btn-primario btn-ancho" data-ir="13">Elegir Profesional</button>
+          </article>
+          <article class="plan r" style="--i:4">
+            <h3>Licencia única</h3>
+            <p class="precio">$9,900 <small>MXN pago único</small></p>
+            <ul>
+              <li>Todas las funciones</li>
+              <li>Instalación en tu equipo o servidor</li>
+              <li>Migración de tus datos</li>
+              <li>3 meses de soporte incluidos</li>
+            </ul>
+            <button class="btn btn-sec btn-ancho" data-ir="13">Cotizar licencia</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. Contacto -->
+    <!-- Cambia el número y correo por los tuyos -->
+    <section class="slide portada" data-titulo="Contacto">
+      <div class="contenido centrado">
+        <span class="chip r" style="--i:0">Empieza hoy</span>
+        <h2 class="display display-cierre r" style="--i:1">Deja de adivinar.<br><em>Empieza a ganar.</em></h2>
+        <div class="pasos r" style="--i:2">
+          <div><b>1</b><span>Demo gratis de 30 min</span></div>
+          <div><b>2</b><span>Instalamos y cargamos tu menú</span></div>
+          <div><b>3</b><span>Capacitación con manual y video</span></div>
+        </div>
+        <div class="acciones r" style="--i:3">
+          <a class="btn btn-primario" href="https://wa.me/520000000000?text=Hola%2C%20quiero%20una%20demo%20de%20InventariCoffe" target="_blank" rel="noopener">Agendar demo por WhatsApp</a>
+          <a class="btn btn-sec" href="mailto:ventas@tucorreo.com?subject=Demo%20InventariCoffe">ventas@tucorreo.com</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Navegación -->
+  <nav class="nav" aria-label="Navegación de diapositivas">
+    <button class="nav-btn" id="prev" aria-label="Diapositiva anterior">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="puntos" id="puntos"></div>
+    <button class="nav-btn" id="next" aria-label="Diapositiva siguiente">
+      <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </nav>
+  <div class="progreso"><span id="barra"></span></div>
+  <p class="ayuda">← → para navegar · F pantalla completa</p>
+
+  <script src="diapositivas.js"></script>
+</body>
+</html>
