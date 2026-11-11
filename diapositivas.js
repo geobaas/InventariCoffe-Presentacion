@@ -98,6 +98,39 @@
     });
   });
 
+  // Pantalla completa con botón (tablet) o tecla F (computadora).
+  // Safari de iPad usa los nombres con prefijo "webkit".
+  const raiz = document.documentElement;
+  const botonPantalla = document.getElementById('pantalla');
+  const pedirPantalla = raiz.requestFullscreen || raiz.webkitRequestFullscreen;
+  const salirPantalla = document.exitFullscreen || document.webkitExitFullscreen;
+
+  function enPantalla() {
+    return !!(document.fullscreenElement || document.webkitFullscreenElement);
+  }
+
+  function alternarPantalla() {
+    if (!pedirPantalla) return;
+    if (enPantalla()) salirPantalla.call(document);
+    else pedirPantalla.call(raiz);
+  }
+
+  function actualizarBotonPantalla() {
+    const dentro = enPantalla();
+    raiz.classList.toggle('en-pantalla', dentro);
+    const texto = dentro ? 'Salir de pantalla completa' : 'Pantalla completa';
+    botonPantalla.setAttribute('aria-label', texto);
+    botonPantalla.title = texto;
+  }
+
+  // El iPhone no permite pantalla completa en páginas: ahí el botón no aparece
+  if (pedirPantalla) {
+    botonPantalla.hidden = false;
+    botonPantalla.addEventListener('click', alternarPantalla);
+    document.addEventListener('fullscreenchange', actualizarBotonPantalla);
+    document.addEventListener('webkitfullscreenchange', actualizarBotonPantalla);
+  }
+
   document.addEventListener('keydown', e => {
     if (e.target.closest('video, input, textarea')) return;
     // Espacio/Enter sobre un botón o enlace lo activa, no cambia de diapositiva
@@ -110,8 +143,7 @@
       case 'Home': ir(0); break;
       case 'End': ir(total - 1); break;
       case 'f': case 'F':
-        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
-        else document.exitFullscreen?.();
+        alternarPantalla();
         break;
     }
   });

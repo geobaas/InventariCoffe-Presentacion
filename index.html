@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Abre sin barras del navegador cuando se agrega a la pantalla de inicio -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="InventariCoffe">
   <title>InventariCoffe — Presentación</title>
   <meta name="description" content="InventariCoffe: inventario, punto de venta, caja, pedidos por WhatsApp con IA y reportes para cafeterías.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +29,12 @@
       InventariCoffe
     </a>
     <div class="barra-der">
+      <button class="tema-btn" id="pantalla" type="button" aria-label="Pantalla completa" title="Pantalla completa" hidden>
+        <!-- Flechas hacia afuera: entrar a pantalla completa -->
+        <svg class="icono-expandir" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+        <!-- Flechas hacia adentro: salir de pantalla completa -->
+        <svg class="icono-contraer" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>
+      </button>
       <button class="tema-btn" id="tema" type="button" aria-label="Cambiar a modo claro" title="Cambiar a modo claro">
         <!-- Sol: visible en modo oscuro (lleva al modo día) -->
         <svg class="icono-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -458,10 +468,15 @@
             <p class="precio">$9,900 <small>MXN pago único</small></p>
             <ul>
               <li>Todas las funciones</li>
-              <li>Instalación en tu equipo o servidor</li>
-              <li>Migración de tus datos</li>
-              <li>3 meses de soporte incluidos</li>
+              <li>Instalación y migración de tus datos</li>
             </ul>
+            <!-- Precios de ejemplo para después de la licencia: ajústalos a los tuyos -->
+            <dl class="extras-licencia">
+              <div><dt>Soporte primeros 3 meses</dt><dd>Incluido</dd></div>
+              <div><dt>Mantenimiento después</dt><dd>$299 <small>/ mes</small></dd></div>
+              <div><dt>Actualización de versión</dt><dd>$1,990</dd></div>
+              <p>Actualización gratis con mantenimiento activo.</p>
+            </dl>
             <button class="btn btn-sec btn-ancho" data-ir="contacto">Cotizar licencia</button>
           </article>
         </div>
@@ -579,7 +594,7 @@
     </button>
   </nav>
   <div class="progreso"><span id="barra"></span></div>
-  <p class="ayuda">← → para navegar · F pantalla completa</p>
+  <p class="ayuda">← → para navegar · F o el botón ⛶ para pantalla completa</p>
 
   <script src="diapositivas.js"></script>
 </body>
